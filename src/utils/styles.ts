@@ -21,10 +21,10 @@ export function normalize(size: number) {
 }
 
 export const Sizes = {
-  HEADER_H: height * 0.11,
-  TEXT_IN_H: height * 0.08,
   FAV_BOX: height * 0.15,
   PREC_2: height * 0.02,
+  CONE_BORDER: width * 0.25,
+  CONE_GAP: width * 0.2,
   FONT: normalize(15)
 }
 
