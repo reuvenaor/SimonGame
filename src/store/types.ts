@@ -1,3 +1,7 @@
 export default {
-  TEMP: 'TEMP'
+  SET_CURRENT: 'SET_CURRENT',
+  ADD_USER_SEQ: 'ADD_USER_SEQ',
+  SET_SEQ: 'SET_SEQ',
+  RUN_SEQ: 'RUN_SEQ',
+  FAILED: 'FAILED'
 }

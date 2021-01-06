@@ -1,7 +1,7 @@
 import {fork} from 'redux-saga/effects'
 
-import {tempSagaWatcher} from './tempSaga';
+import {runSeqSagaWatcher} from './runSeqSaga';
 
 export default function* rootSaga() {
-  yield fork(tempSagaWatcher);
+  yield fork(runSeqSagaWatcher);
 }

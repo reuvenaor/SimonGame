@@ -9,5 +9,3 @@ export const Cons = {
   2: 'blue',
   3: 'green'
 };
-
-

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import users from './usersReducer';
+import sequence from './sequenceReducer';
 
 const rootReducer = combineReducers({
-  users,
+  sequence,
 });
 
 export default rootReducer;
