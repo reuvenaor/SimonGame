@@ -9,7 +9,9 @@ import { selectCurrent, selectIsRuning } from '../../store/selctors'
 import { addUserSeq } from '../../store/actions'
 import * as Animatable from 'react-native-animatable';
 import { opacity } from './animation';
-import { Cons } from '../../utils/enums'
+import { Cons, Screens } from '../../utils/enums';
+import { useNavigation } from '@react-navigation/native';
+
 
 const AnimatedPressable = Animatable.createAnimatableComponent(Pressable);
 
@@ -19,8 +21,11 @@ export default Cone = ({ style, id, disabled }) => {
   const current = useSelector(selectCurrent);
   const isRuning = useSelector(selectIsRuning);
   const conRef = React.useRef(null);
+  const navigator = useNavigation();
+  
 
   const onAddUserSeq = () => {
+    navigator.navigate(Screens.MODAL)
     if (conRef.current) {
       conRef.current.animate(opacity);
     }

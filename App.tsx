@@ -11,19 +11,30 @@ import configureStore from './src/store/configureStore';
 const store = configureStore();
 import FirstScreen from './src/screens/FirstScreen';
 import SecondScreen from './src/screens/SecondScreen';
+import Modal from './src/screens/Modal';
 import {Screens} from './src/utils/enums'
 
-
 const Stack = createStackNavigator();
+const GameStack = createStackNavigator();
+
+function GameStackScreens() {
+  return (
+    <GameStack.Navigator headerMode="none" >
+      <GameStack.Screen name={Screens.FIRST_SCREEN} component={FirstScreen} />
+      <GameStack.Screen name={Screens.SECOND_SCREEN} component={SecondScreen} />
+    </GameStack.Navigator>
+  );
+}
+
 StatusBar.setHidden(true)
 
 function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen name={Screens.FIRST_SCREEN} component={FirstScreen} />
-          <Stack.Screen name={Screens.SECOND_SCREEN} component={SecondScreen} />
+        <Stack.Navigator headerMode="none" mode='modal'>
+          <Stack.Screen name={Screens.GAMES_SCREEN} component={GameStackScreens} />
+          <Stack.Screen name={Screens.MODAL} component={Modal}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

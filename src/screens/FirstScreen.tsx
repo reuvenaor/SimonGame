@@ -25,6 +25,7 @@ const st = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: '100%',
+    flex: 1,
     backgroundColor: Colors.BACKGROUND
   }
 });
