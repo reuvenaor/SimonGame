@@ -4,23 +4,32 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Colors } from '../../utils/styles';
-import UiText from '../uText';
+import UiText from '../uText/uText';
 
-const UiButton = ({onPress, title, style}) => {
+const UiButton = ({ onPress, title, style, disabled }) => {
+
+  const disableStyle = disabled ? {backgroundColor: Colors.DARK} : null;
 
   return (
-    <TouchableOpacity onPress={onPress} style={[stl.btn, style]}>
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+      style={[
+        st.btn, 
+        style,
+        disableStyle
+      ]}
+    >
       <UiText>{title}</UiText>
     </TouchableOpacity>
   );
 }
 
-const stl = StyleSheet.create({
+const st = StyleSheet.create({
   btn: {
     width: 90,
     height: 40,
     borderRadius: 20,
-    backgroundColor: Colors.DARK,
     alignItems: 'center',
     justifyContent: 'center'
   }

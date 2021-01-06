@@ -4,21 +4,17 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Colors } from '../utils/styles';
-import { useDispatch } from '../store/react-redux';
 import Board from '../components/board';
-import { runSequence } from '../store/actions';
+import ScoreText from '../components/scoreText';
+import Button from '../components/playButton';
 
 const FirstScreen = () => {
 
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch(runSequence())
-  }, [])
-
   return (
     <View style={[st.container]}>
+      <Button/>
       <Board />
+      <ScoreText />
     </View>
   );
 }
@@ -29,7 +25,6 @@ const st = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: '100%',
-    ...StyleSheet.AbsoluteFillStyle,
     backgroundColor: Colors.BACKGROUND
   }
 });

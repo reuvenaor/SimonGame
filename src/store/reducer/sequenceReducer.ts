@@ -1,16 +1,16 @@
 import ActionsType from '../types';
 
-import { Sequence } from '../../utils/models';
-import {ActionProp, State} from '../../utils/interfaces';
-const Seq = new Sequence();
-
-const seq = [...Seq.seqInit()];
+import { seqInit } from '../../utils/helpers';
+import { ActionProp, State } from '../../utils/interfaces';
 
 const initialState: State = {
   current: -1,
-  gameSequence: seq,
+  gameSequence: seqInit(),
+  isRuning: false,
   failmsg: '',
-  userSequence: []
+  userSequence: [],
+  endGame: false,
+  score: 0,
 };
 
 
@@ -21,10 +21,22 @@ function rootReducer(state = initialState, action: ActionProp) {
         ...state,
         current: action.payload
       };
-    case ActionsType.ADD_USER_SEQ:
+    case ActionsType.SET_USER_SEQ:
       return {
         ...state,
         userSequence: [...state.userSequence, action.payload],
+      };
+    case ActionsType.SET_IS_RUN:
+      return {
+        ...state,
+        isRuning: !state.isRuning
+      };
+    case ActionsType.NEW_GAME:
+      return {
+        ...state,
+        score: state.score + 1,
+        gameSequence: seqInit(state.score + 1),
+        userSequence: [],
       };
     case ActionsType.FAILED:
       return {

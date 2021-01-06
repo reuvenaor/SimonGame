@@ -9,6 +9,9 @@ export interface State {
     gameSequence: Array<number>,
     failmsg: string,
     userSequence: Array<number>
+    isRuning: boolean
+    endGame: boolean,
+    score: number
 }
 
 export interface ActionProp extends Action {

@@ -25,15 +25,18 @@ export const Sizes = {
   PREC_2: height * 0.02,
   CONE_BORDER: width * 0.25,
   CONE_GAP: width * 0.2,
-  FONT: normalize(15)
+  SCORE_POS: (width * 0.25) + (height * 0.1),
+  FONT_15: normalize(15),
+  FONT_17: normalize(17),
 }
 
 export const Colors = {
   BACKGROUND: '#111',
+  WHITE: '#fff',
   BLACK: '#000',
   LIGHT: '#eee',
   AMB: '#ddd',
-  DARK: '#ccc',
+  DARK: '#aaa',
 }
 
 export const Styles = StyleSheet.create({

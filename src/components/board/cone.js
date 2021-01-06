@@ -5,30 +5,30 @@ import {
 } from 'react-native';
 import { Sizes } from '../../utils/styles';
 import { useSelector, useDispatch } from '../../store/react-redux'
-import { selectCurrent } from '../../store/selctors'
-import { addUersSeqNum } from '../../store/actions'
+import { selectCurrent, selectIsRuning } from '../../store/selctors'
+import { addUserSeq } from '../../store/actions'
 import * as Animatable from 'react-native-animatable';
 import { opacity } from './animation';
 import { Cons } from '../../utils/enums'
 
 const AnimatedPressable = Animatable.createAnimatableComponent(Pressable);
 
-export default Cone = ({ style, id }) => {
+export default Cone = ({ style, id, disabled }) => {
 
   const dispatch = useDispatch();
   const current = useSelector(selectCurrent);
+  const isRuning = useSelector(selectIsRuning);
   const conRef = React.useRef(null);
 
   const onAddUserSeq = () => {
     if (conRef.current) {
       conRef.current.animate(opacity);
     }
-    dispatch(addUersSeqNum(id))
+    dispatch(addUserSeq(id))
   }
 
   React.useEffect(() => {
     if (current === id) {
-      console.log('id:', id, 'current:', current);
       conRef.current.animate(opacity);
     }
   }, [current])
@@ -38,6 +38,7 @@ export default Cone = ({ style, id }) => {
     ref={conRef}
     style={[st.cone, { borderTopColor: Cons[id] }, style]}
     onPress={onAddUserSeq}
+    disabled={isRuning}
   />
 };
 
