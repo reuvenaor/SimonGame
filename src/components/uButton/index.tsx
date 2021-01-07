@@ -4,9 +4,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Colors } from '../../utils/styles';
-import UiText from '../uText/uText';
+import UiText from '../uText';
+import {UButtonProp} from '../../utils/interfaces';
 
-const UiButton = ({ onPress, title, style, disabled }) => {
+const UiButton = ({ onPress, title, style, disabled, fontStyle }: UButtonProp) => {
 
   const disableStyle = disabled ? {backgroundColor: Colors.DARK} : null;
 
@@ -20,18 +21,20 @@ const UiButton = ({ onPress, title, style, disabled }) => {
         disableStyle
       ]}
     >
-      <UiText>{title}</UiText>
+      <UiText style={fontStyle}>{title}</UiText>
     </TouchableOpacity>
   );
 }
 
 const st = StyleSheet.create({
   btn: {
-    width: 90,
-    height: 40,
-    borderRadius: 20,
+    paddingHorizontal: 22,
+    paddingVertical: 12,
+    borderRadius: 60,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: Colors.WHITE,
+
   }
 });
 

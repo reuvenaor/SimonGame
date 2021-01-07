@@ -1,6 +1,5 @@
 import ActionsType from '../types';
 
-
 export function addSeqNum () {
   return { type: ActionsType.SET_SEQ}
 }
@@ -35,4 +34,16 @@ export function newGame () {
 
 export function endGame () {
   return { type: ActionsType.END_GAME}
+}
+ 
+export function storeScore (name: string) {
+  return { type: ActionsType.STORE_SCORE, payload: name}
+}
+
+export function setScores (scores: Array<any>) {
+  return { type: ActionsType.SET_SCORES, payload: scores}
+}
+
+export function resetEndGame () {
+  return {type: ActionsType.RESET_END}
 }

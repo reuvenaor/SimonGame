@@ -1,47 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Pressable,
 } from 'react-native';
-import { Sizes } from '../../utils/styles';
+import { Sizes, Colors } from '../../utils/styles';
 import { useSelector, useDispatch } from '../../store/react-redux'
 import { selectCurrent, selectIsRuning } from '../../store/selctors'
 import { addUserSeq } from '../../store/actions'
-import * as Animatable from 'react-native-animatable';
-import { opacity } from './animation';
-import { Cons, Screens } from '../../utils/enums';
-import { useNavigation } from '@react-navigation/native';
+import { Cons } from '../../utils/enums';
+import Animated from 'react-native-reanimated';
+import { interpolateColor, useTransition } from "react-native-redash";
+import { ConeProp } from '../../utils/interfaces';
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const AnimatedPressable = Animatable.createAnimatableComponent(Pressable);
-
-export default Cone = ({ style, id, disabled }) => {
+const Cone = ({ style, id }: ConeProp) => {
 
   const dispatch = useDispatch();
   const current = useSelector(selectCurrent);
   const isRuning = useSelector(selectIsRuning);
   const conRef = React.useRef(null);
-  const navigator = useNavigation();
-  
+  const [anime, setAnime] = useState(false);
+
+  const transition = useTransition(anime || id === current, { duration: 400 });
+
+  const interColor = interpolateColor(transition, {
+    inputRange: [0, 1],
+    outputRange: [Cons[id], Colors.WHITE]
+  });
 
   const onAddUserSeq = () => {
-    navigator.navigate(Screens.MODAL)
-    if (conRef.current) {
-      conRef.current.animate(opacity);
-    }
+    setAnime(true);
     dispatch(addUserSeq(id))
+    setTimeout(() => setAnime(false), 500);
   }
-
-  React.useEffect(() => {
-    if (current === id) {
-      conRef.current.animate(opacity);
-    }
-  }, [current])
-
 
   return <AnimatedPressable
     ref={conRef}
-    style={[st.cone, { borderTopColor: Cons[id] }, style]}
+    style={[st.cone,
+      style,
+    { borderTopColor: Cons[id], borderTopColor: interColor }
+    ]}
     onPress={onAddUserSeq}
     disabled={isRuning}
   />
@@ -60,3 +59,5 @@ const st = StyleSheet.create({
     position: 'absolute'
   },
 });
+
+export default Cone;

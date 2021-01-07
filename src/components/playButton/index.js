@@ -3,7 +3,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import UiButton from '../uButton/index';
-import { Sizes, Colors } from '../../utils/styles';
+import { Sizes } from '../../utils/styles';
 import { useDispatch, useSelector } from '../../store/react-redux';
 import { runSequence } from '../../store/actions';
 import { selectIsRuning } from '../../store/selctors'
@@ -18,11 +18,11 @@ const PlayButton = () => {
   }
 
   return (
-    <UiButton 
-    onPress={onRun} 
-    style={st.btn} 
-    title={'START'} 
-    disabled={isRuning}
+    <UiButton
+      onPress={onRun}
+      style={st.btn}
+      title={'START'}
+      disabled={isRuning}
     />
   );
 }
@@ -30,7 +30,6 @@ const PlayButton = () => {
 const st = StyleSheet.create({
   btn: {
     transform: [{ translateY: -Sizes.SCORE_POS }],
-    backgroundColor: Colors.WHITE,
   }
 });
 

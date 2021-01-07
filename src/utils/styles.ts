@@ -26,6 +26,10 @@ export const Sizes = {
   CONE_BORDER: width * 0.25,
   CONE_GAP: width * 0.2,
   SCORE_POS: (width * 0.25) + (height * 0.1),
+  SCORE_ITEM_H: height * 0.15,
+  SCORE_ITEM_W: width * 0.8,
+  SCROLL_PAD: height * 0.1,
+  ARROW: height * 0.08,
   FONT_15: normalize(15),
   FONT_17: normalize(17),
 }
@@ -41,16 +45,13 @@ export const Colors = {
 
 export const Styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
-    zIndex: 1,
-    flex: 1,
-    backgroundColor: Colors.AMB,
+    justifyContent: 'center',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    flex: 1,
+    backgroundColor: Colors.BACKGROUND
   },
-  body: { flex: 0.9, width: '100%', alignItems: 'center'  },
-  bodyScroll: {flex: 0.9, width: '100%'},
   center: {
     alignItems: 'center',
     justifyContent: 'center'
@@ -76,14 +77,4 @@ export const Styles = StyleSheet.create({
     shadowRadius: 3.84,
     borderWidth: 2
   },
-  box: {
-    height: Sizes.FAV_BOX,
-    marginTop: Sizes.PREC_2,
-    borderRadius: Sizes.PREC_2,
-    margin: '2%',
-    backgroundColor: Colors.LIGHT,
-    elevation: 2,
-    alignItems: 'center',
-    justifyContent: 'space-evenly'
-  }
 });

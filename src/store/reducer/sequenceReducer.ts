@@ -11,6 +11,7 @@ const initialState: State = {
   userSequence: [],
   endGame: false,
   score: 0,
+  scores: []
 };
 
 
@@ -24,7 +25,7 @@ function rootReducer(state = initialState, action: ActionProp) {
     case ActionsType.SET_USER_SEQ:
       return {
         ...state,
-        userSequence: [...state.userSequence, action.payload],
+        userSequence: [...state.userSequence, action.payload, -1],
       };
     case ActionsType.SET_IS_RUN:
       return {
@@ -37,6 +38,24 @@ function rootReducer(state = initialState, action: ActionProp) {
         score: state.score + 1,
         gameSequence: seqInit(state.score + 1),
         userSequence: [],
+      };
+    case ActionsType.END_GAME:
+      return {
+        ...state,
+        gameSequence: seqInit(),
+        userSequence: [],
+        endGame: true
+      };
+    case ActionsType.RESET_END:
+      return {
+        ...state,
+        endGame: false,
+        score: 0
+      };
+    case ActionsType.SET_SCORES:
+      return {
+        ...state,
+        scores: action.payload
       };
     case ActionsType.FAILED:
       return {

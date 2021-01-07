@@ -14,9 +14,9 @@ function* runSeqSaga() {
       yield put(isRuningSequence());
       for (const [idx, val] of seq.entries()) {
         yield put(setCurrent(val));
-        yield delay(1000)
+        yield delay(500);
         if (idx === seq.length-1) {
-          console.log('seq.length',seq.length)
+          yield delay(1000);
           yield put(isRuningSequence());
         }
       }

@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   StyleSheet,
 } from 'react-native';
-import { Colors } from '../utils/styles';
+import { Styles, Sizes } from '../utils/styles';
 import Board from '../components/board';
 import ScoreText from '../components/scoreText';
 import Button from '../components/playButton';
+import { useSelector } from '../store/react-redux'
+import {selectEndGame} from '../store/selctors'
+import { Screens } from '../utils/enums';
+import {ScreenProp} from '../utils/interfaces'
 
-const FirstScreen = () => {
+const GameScreen = ({navigation}: ScreenProp) => {
+
+  const endGame = useSelector(selectEndGame);
+
+  useEffect(() => {
+    if (endGame) {
+      navigation.navigate(Screens.MODAL);
+    }
+  },[endGame])
+
 
   return (
-    <View style={[st.container]}>
+    <View style={[Styles.container]}>
       <Button/>
       <Board />
-      <ScoreText />
+      <ScoreText style={st.score}/>
     </View>
   );
 }
 
 const st = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-    flex: 1,
-    backgroundColor: Colors.BACKGROUND
+  score: {
+    transform: [{ translateY: Sizes.SCORE_POS }],
   }
 });
 
 
-export default FirstScreen;
+export default GameScreen;
