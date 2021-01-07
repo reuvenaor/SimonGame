@@ -29,11 +29,11 @@ function* storeScoreSaga(action: ActionProp) {
         score: score,
       });
     });
-    const scores = yield realm.objects(SCHEME_NAME).toJSON()
-    .sort((a: number, b: number) => b - a).slice(0, 10);
-    yield realm.close();
+    const scores =  realm.objects(SCHEME_NAME).toJSON()
+    const arr = scores.sort((a: any, b: any) => b.score - a.score).slice(0, 10);
+    realm.close();
     yield put(resetEndGame());
-    yield put(setScores(scores));
+    yield put(setScores(arr));
   } catch (e) {
     yield put(failed(e.message));
   }
