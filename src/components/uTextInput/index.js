@@ -3,7 +3,7 @@ import {
   StyleSheet,
   TextInput,
 } from 'react-native';
-import { Sizes, Colors } from '../../utils/styles';
+import { Colors } from '../../utils/styles';
 
 const UiTextInput = (props) => {
 
@@ -36,6 +36,5 @@ const stl = StyleSheet.create({
     marginVertical: '2%'
   },
 });
-
 
 export default UiTextInput;

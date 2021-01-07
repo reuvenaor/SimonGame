@@ -21,6 +21,11 @@ export interface ActionProp extends Action {
   payload?: any;
 }
 
+export interface ScoreProp {
+  name: string,
+  score: number
+}
+
 export interface ScreenProp {
   navigation: any
 }

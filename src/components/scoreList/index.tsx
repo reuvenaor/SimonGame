@@ -34,9 +34,6 @@ const stl = StyleSheet.create({
   scroll: {
     width: '100%',
     paddingHorizontal: '2%',
-    // paddingTop: '15%',
-    // top: 60,
-    // bottom: 60
   },
 });
 

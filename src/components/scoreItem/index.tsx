@@ -6,9 +6,9 @@ import {
 } from 'react-native';
 import { Colors, Sizes } from '../../utils/styles';
 import UiText from '../uText';
+import {ScoreProp} from '../../utils/interfaces'
 
-const ScoreItem = ({ score, name }) => {
-
+const ScoreItem = ({ score, name }: ScoreProp) => {
 
   return (
     <View style={st.item}>
